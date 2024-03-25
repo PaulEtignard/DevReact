@@ -1,33 +1,23 @@
-import { Text,View, Image } from "react-native";
-import { User } from "./components/User";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { Text,View, Image, TouchableOpacity } from "react-native";
 import {s} from "./App.style"
-import { FlexDemo } from "./components/FlexDemo/FlexDemo";
-import { ScoreCounter } from "./components/ScoreCounter/ScoreCounter";
+import { useState } from "react";
 
 export default function App() {
+  const [movie,setMovie] = useState("star wars");
+  
+  function updateMovie(){
+    setMovie("Forest Gump");
+    console.log(movie);
+  }
+
+  console.log("render",movie);
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={{backgroundColor:"red", flex:1}}>
-        <User
-          firstName={"Paul"}
-          lastName={"Doe"}
-          age={40}
-          adress={{street: "8B rue jean wyrch", city:"Besançon"}}
-          isVerified={true}
-          doSomething={function (){
-            console.log("User authenticated")
-          }}
-        >
-          <Image
-              style={{height: 200, with:300}}
-              source={{uri: "https://randomuser.me/api/portraits/men/36.jpg" }}
-          />
-        </User>
-        <ScoreCounter/>
-      </SafeAreaView>
-    </SafeAreaProvider>
     
+    <View style={s.container}>      
+      <TouchableOpacity onPress={updateMovie}>
+        <Text>{movie}</Text>
+      </TouchableOpacity>
+    </View>
   );
 }
 
