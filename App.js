@@ -1,23 +1,20 @@
-import { Text,View, Image, TouchableOpacity } from "react-native";
-import {s} from "./App.style"
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { useState } from "react";
+import { Child } from "./components/Child/Child";
 
 export default function App() {
-  const [movie,setMovie] = useState("star wars");
-  
-  function updateMovie(){
-    setMovie("Forest Gump");
-    console.log(movie);
+  const [age,setAge] = useState(0);
+  function hello(name){
+    setAge(age + 1);
   }
 
-  console.log("render",movie);
+  console.log(age);
   return (
-    
-    <View style={s.container}>      
-      <TouchableOpacity onPress={updateMovie}>
-        <Text>{movie}</Text>
-      </TouchableOpacity>
-    </View>
-  );
+    <SafeAreaProvider>
+      <SafeAreaView style={{backgroundColor: "grey", flex: 1}}>
+        <Child onPress={hello}/>
+      </SafeAreaView>
+    </SafeAreaProvider>
+  )
 }
 
