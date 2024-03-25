@@ -3,6 +3,7 @@ import { User } from "./components/User";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import {s} from "./App.style"
 import { FlexDemo } from "./components/FlexDemo/FlexDemo";
+import { ScoreCounter } from "./components/ScoreCounter/ScoreCounter";
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
               source={{uri: "https://randomuser.me/api/portraits/men/36.jpg" }}
           />
         </User>
+        <ScoreCounter/>
       </SafeAreaView>
     </SafeAreaProvider>
     
