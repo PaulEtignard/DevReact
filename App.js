@@ -1,20 +1,16 @@
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import { useState } from "react";
-import { Child } from "./components/Child/Child";
+import { Platform, Text } from "react-native";
 
 export default function App() {
-  const [age,setAge] = useState(0);
-  function hello(name){
-    setAge(age + 1);
-  }
-
-  console.log(age);
-  return (
-    <SafeAreaProvider>
-      <SafeAreaView style={{backgroundColor: "grey", flex: 1}}>
-        <Child onPress={hello}/>
+  return (<SafeAreaProvider>
+    <SafeAreaView style={{flex:1}}>
+      {Platform.OS === "ios" ? (
+        <Text>Hello sur ios</Text>
+      ) : (
+        <Text>Hello sur android</Text>
+      )}
       </SafeAreaView>
-    </SafeAreaProvider>
-  )
+  </SafeAreaProvider>)
+
 }
 
